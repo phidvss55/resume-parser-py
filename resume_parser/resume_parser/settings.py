@@ -34,9 +34,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    "crispy_forms",
     "parser_api",
-    # "crispy_bootstrap4",
     "rest_framework",
     "django.contrib.admin",
     "django.contrib.auth",

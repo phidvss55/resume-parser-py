@@ -44,11 +44,16 @@ pip install -r requirements.txt
 
 ```
 pip install Django
-pip install django-crispy-forms
-pip install crispy-bootstrap4
 pip install python-dotenv
 pip install djangorestframework
 pip install pyresparser
+```
+
+- Ignore this
+
+```
+# pip install django-crispy-forms
+# pip install crispy-bootstrap4
 ```
 
 4. Serve the application
@@ -76,10 +81,7 @@ _Run beblow_
 
 ```
 pip install nltk
-
 pip install spacy==2.3.5
-
 pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz
-
 pip install pyresparser
 ```
