@@ -2,13 +2,17 @@
 FROM python:3.9
 
 # Set the working directory inside the container
-WORKDIR /code
+WORKDIR /app
 
-# Copy the requirements file to the container
-# COPY requirements.txt .
+RUN apt-get update && apt-get install -y python3-venv
 
-# Install the required dependencies
-# RUN pip install --no-cache-dir -r requirements.txt
+# Create a virtual environment
+RUN python3 -m venv env
+
+RUN source env/bin/activate
+
+# Set the environment variable for the virtual environment
+ENV PATH="/app/env/bin:$PATH"
 
 # Install dependencies manual
 RUN pip install Django
@@ -17,14 +21,19 @@ RUN pip install djangorestframework
 RUN pip install pyresparser
 RUN pip install nltk
 
+# Setup NLTK stopwords resources
+RUN python3 -m nltk.downloader stopwords
+
 # Copy the application code to the container
 COPY . .
 
 # Set the environment variable for running the application
 ENV PYTHONUNBUFFERED 1
 
+WORKDIR /app/resume_parser
+
 # Expose the port on which the application will run
 EXPOSE 7000
 
 # Start the application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:7000"]
+CMD ["python3", "manage.py", "runserver", "localhost:7000"]
